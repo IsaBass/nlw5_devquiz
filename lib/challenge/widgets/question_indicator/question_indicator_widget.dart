@@ -1,9 +1,16 @@
-import 'package:devquiz/core/core.dart';
-import 'package:devquiz/shared/widgets/progress_indicator_widget.dart';
 import 'package:flutter/material.dart';
 
+import 'package:devquiz/core/core.dart';
+import 'package:devquiz/shared/widgets/progress_indicator_widget.dart';
+
 class QuestionIndicatorWidget extends StatelessWidget {
-  const QuestionIndicatorWidget({Key? key}) : super(key: key);
+  final int totQuestions;
+  final int questionAtual;
+  const QuestionIndicatorWidget({
+    Key? key,
+    required this.totQuestions,
+    required this.questionAtual,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,17 +22,17 @@ class QuestionIndicatorWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Questão 4",
+                "Questão $questionAtual",
                 style: AppTextStyles.body,
               ),
               Text(
-                "de 10",
+                "de $totQuestions",
                 style: AppTextStyles.body,
               ),
             ],
           ),
           SizedBox(height: 16),
-          ProgressIndicatorWidget(value: 0.4),
+          ProgressIndicatorWidget(value: questionAtual / totQuestions),
         ],
       ),
     );

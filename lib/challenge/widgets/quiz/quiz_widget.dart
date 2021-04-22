@@ -1,56 +1,52 @@
-import 'package:devquiz/challenge/widgets/awnser/awnser_widget.dart';
-import 'package:devquiz/core/core.dart';
 import 'package:flutter/material.dart';
 
-class QuizWidget extends StatelessWidget {
-  final String title;
-  const QuizWidget({Key? key, required this.title}) : super(key: key);
+import 'package:devquiz/challenge/widgets/awnser/awnser_widget.dart';
+import 'package:devquiz/core/core.dart';
+import 'package:devquiz/shared/models/awnser_model.dart';
+import 'package:devquiz/shared/models/question_model.dart';
+
+class QuizWidget extends StatefulWidget {
+  final QuestionModel question;
+  final VoidCallback onChange;
+  const QuizWidget({
+    Key? key,
+    required this.question,
+    required this.onChange,
+  }) : super(key: key);
+
+  @override
+  _QuizWidgetState createState() => _QuizWidgetState();
+}
+
+class _QuizWidgetState extends State<QuizWidget> {
+  int indexSelected = -1;
+
+  AwnserModel awnser(int index) => widget.question.awnsers[index];
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        children: [
-          Text(
-            title,
-            style: AppTextStyles.heading.copyWith(fontSize: 20),
-          ),
-          SizedBox(height: 24),
+      child: Column(children: [
+        SizedBox(height: 30),
+        Text(
+          widget.question.title,
+          style: AppTextStyles.heading.copyWith(fontSize: 20),
+        ),
+        SizedBox(height: 24),
+        for (var i = 0; i < widget.question.awnsers.length; i++)
           AwnserWidget(
-            isRight: false,
-            isSelected: true,
-            title:
-                "Possibilita a criação de aplicativos compilados nativamente",
-          ),
-          AwnserWidget(
-            isRight: false,
-            isSelected: false,
-            title:
-                "Possibilita a criação de aplicativos compilados nativamente",
-          ),
-          AwnserWidget(
-            isRight: true,
-            isSelected: true,
-            title:
-                "Possibilita a criação de aplicativos compilados nativamente",
-          ),
-          AwnserWidget(
-            isRight: false,
-            isSelected: false,
-            title:
-                "Possibilita a criação de aplicativos compilados nativamente",
-          ),
-          SizedBox(height: 80),
-          Expanded(
-              child: Center(
-            child: Text(
-              "#embuscadoproximonivel",
-              style: AppTextStyles.heading40
-                  .copyWith(fontSize: 30, color: Colors.green),
-            ),
-          ))
-        ],
-      ),
+            awnser: awnser(i),
+            isSelected: indexSelected == i,
+            disable: indexSelected != -1,
+            onTap: () {
+              setState(() {
+                indexSelected = i;
+              });
+              Future.delayed(Duration(seconds: 2))
+                  .then((value) => widget.onChange());
+            },
+          )
+      ]),
     );
   }
 }
