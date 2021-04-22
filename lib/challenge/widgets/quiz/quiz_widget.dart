@@ -42,10 +42,12 @@ class QuizWidget extends StatelessWidget {
           ),
           SizedBox(height: 80),
           Expanded(
-              child: Text(
-            "#embuscadoproximonivel",
-            style: AppTextStyles.heading40
-                .copyWith(fontSize: 30, color: Colors.green),
+              child: Center(
+            child: Text(
+              "#embuscadoproximonivel",
+              style: AppTextStyles.heading40
+                  .copyWith(fontSize: 30, color: Colors.green),
+            ),
           ))
         ],
       ),
