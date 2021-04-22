@@ -17,16 +17,33 @@ class AwnserWidget extends StatelessWidget {
     required this.disable,
   }) : super(key: key);
 
-  Color get _selectedColorRight =>
-      awnser.isRight ? AppColors.darkGreen : AppColors.darkRed;
-  Color get _selectedBorderRight =>
-      awnser.isRight ? AppColors.lightGreen : AppColors.lightRed;
-  Color get _selectedColorCardRight =>
-      awnser.isRight ? AppColors.lightGreen : AppColors.lightRed;
-  Color get _selectedBorderCardRight =>
-      awnser.isRight ? AppColors.green : AppColors.red;
-  TextStyle get _selectedTextStyleRight =>
-      awnser.isRight ? AppTextStyles.bodyDarkGreen : AppTextStyles.bodyDarkRed;
+  Color get _selectedColorRight => isSelected
+      ? awnser.isRight
+          ? AppColors.darkGreen
+          : AppColors.darkRed
+      : AppColors.white;
+  Color get _selectedBorderRight => isSelected
+      ? awnser.isRight
+          ? AppColors.lightGreen
+          : AppColors.lightRed
+      : AppColors.border;
+  Color get _selectedColorCardRight => isSelected
+      ? awnser.isRight
+          ? AppColors.lightGreen
+          : AppColors.lightRed
+      : AppColors.white;
+  Color get _selectedBorderCardRight => isSelected
+      ? awnser.isRight
+          ? AppColors.green
+          : AppColors.red
+      : AppColors.border;
+
+  TextStyle get _selectedTextStyleRight => isSelected
+      ? awnser.isRight
+          ? AppTextStyles.bodyDarkGreen
+          : AppTextStyles.bodyDarkRed
+      : AppTextStyles.body;
+
   IconData get _selectedIconRight => awnser.isRight ? Icons.check : Icons.close;
 
   @override
@@ -39,29 +56,30 @@ class AwnserWidget extends StatelessWidget {
           margin: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
           padding: EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: isSelected ? _selectedColorCardRight : AppColors.white,
+            color: _selectedColorCardRight,
             borderRadius: BorderRadius.circular(10),
-            border: Border.fromBorderSide(BorderSide(
-              color: isSelected ? _selectedBorderCardRight : AppColors.border,
-            )),
+            border: Border.fromBorderSide(
+              BorderSide(
+                color: _selectedBorderCardRight,
+              ),
+            ),
           ),
           child: Row(
             children: [
               Expanded(
                 child: Text(
                   awnser.title,
-                  style:
-                      isSelected ? _selectedTextStyleRight : AppTextStyles.body,
+                  style: _selectedTextStyleRight,
                 ),
               ),
               Container(
                 width: 24,
                 height: 24,
                 decoration: BoxDecoration(
-                  color: isSelected ? _selectedColorRight : AppColors.white,
+                  color: _selectedColorRight,
                   borderRadius: BorderRadius.circular(500),
                   border: Border.fromBorderSide(BorderSide(
-                    color: isSelected ? _selectedBorderRight : AppColors.border,
+                    color: _selectedBorderRight,
                   )),
                 ),
                 child: isSelected

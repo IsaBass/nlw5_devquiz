@@ -53,9 +53,10 @@ class QuizCardWidget extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child: ProgressIndicatorWidget(
-                      value: quiz.questionsAwnsered > 0
-                          ? quiz.questionsAwnsered / quiz.questions.length
-                          : 0),
+                    value: quiz.questionsAwnsered > 0
+                        ? quiz.questionsAwnsered / quiz.questions.length
+                        : 0.0,
+                  ),
                 ),
               ],
             )

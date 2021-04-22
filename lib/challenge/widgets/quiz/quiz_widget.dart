@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:devquiz/challenge/widgets/awnser/awnser_widget.dart';
 import 'package:devquiz/core/core.dart';
 import 'package:devquiz/shared/models/awnser_model.dart';
@@ -25,28 +24,31 @@ class _QuizWidgetState extends State<QuizWidget> {
 
   @override
   Widget build(BuildContext context) {
+    // widget.question.awnsers.shuffle(Random(5));
     return Container(
-      child: Column(children: [
-        SizedBox(height: 30),
-        Text(
-          widget.question.title,
-          style: AppTextStyles.heading.copyWith(fontSize: 20),
-        ),
-        SizedBox(height: 24),
-        for (var i = 0; i < widget.question.awnsers.length; i++)
-          AwnserWidget(
-            awnser: awnser(i),
-            isSelected: indexSelected == i,
-            disable: indexSelected != -1,
-            onTap: () {
-              setState(() {
-                indexSelected = i;
-              });
-              Future.delayed(Duration(seconds: 2))
-                  .then((value) => widget.onChange());
-            },
-          )
-      ]),
+      child: Column(
+        children: [
+          SizedBox(height: 30),
+          Text(
+            widget.question.title,
+            style: AppTextStyles.heading.copyWith(fontSize: 20),
+          ),
+          SizedBox(height: 24),
+          for (var i = 0; i < widget.question.awnsers.length; i++)
+            AwnserWidget(
+              awnser: awnser(i),
+              isSelected: indexSelected == i,
+              disable: indexSelected != -1,
+              onTap: () {
+                setState(() {
+                  indexSelected = i;
+                });
+                Future.delayed(Duration(seconds: 2))
+                    .then((value) => widget.onChange());
+              },
+            ),
+        ],
+      ),
     );
   }
 }

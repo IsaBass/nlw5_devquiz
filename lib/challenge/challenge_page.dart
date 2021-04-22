@@ -15,7 +15,6 @@ class ChallengePage extends StatefulWidget {
 
 class _ChallengePageState extends State<ChallengePage> {
   final ChallengeController _controller = ChallengeController();
-
   final PageController pageController = PageController();
 
   @override
@@ -70,33 +69,27 @@ class _ChallengePageState extends State<ChallengePage> {
       bottomNavigationBar: SafeArea(
         bottom: true,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
           child: ValueListenableBuilder<int>(
               valueListenable: _controller.currentPageNotifier,
-              builder: (ctx, value, _) =>
-                  //value == widget.quiz.questions.length
-                  //?
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      if (value != widget.quiz.questions.length - 1)
-                        Expanded(
-                            child: NextButtonWidget.white(
-                          label: "Pular",
-                          onTap: nextPage,
-                        )),
-                      if (value == widget.quiz.questions.length - 1)
-                        SizedBox(width: 7),
-                      if (value == widget.quiz.questions.length - 1)
-                        Expanded(
-                            child: NextButtonWidget.green(
-                          label: "Confirmar",
-                          onTap: () {},
-                        ))
-                    ],
-                  )
-              // : Container(),
-              ),
+              builder: (ctx, value, _) => Row(
+                    //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: (value != widget.quiz.questions.length - 1)
+                        ? [
+                            Expanded(
+                                child: NextButtonWidget.white(
+                              label: "Pular",
+                              onTap: nextPage,
+                            )),
+                          ]
+                        : [
+                            Expanded(
+                                child: NextButtonWidget.green(
+                              label: "Confirmar",
+                              onTap: () {},
+                            ))
+                          ],
+                  )),
         ),
       ),
     );

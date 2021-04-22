@@ -6,7 +6,9 @@ class LevelButtonWidget extends StatelessWidget {
   final String label;
 
   LevelButtonWidget({Key? key, required this.label})
-      : assert(["Fácil", "Médio", "Difícil", "Perito"].contains(label)),
+      : assert(
+          ["Fácil", "Médio", "Difícil", "Perito"].contains(label),
+        ),
         super(key: key);
 
   final config = {
@@ -45,7 +47,7 @@ class LevelButtonWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(28),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 6),
+        padding: const EdgeInsets.symmetric(horizontal: 23, vertical: 6),
         child: Text(
           label,
           style: GoogleFonts.notoSans(

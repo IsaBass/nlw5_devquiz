@@ -40,31 +40,32 @@ class _HomePageState extends State<HomePage> {
         : Scaffold(
             appBar: AppBarWidget(user: controller.user!),
             body: Container(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        LevelButtonWidget(label: "Fácil"),
-                        LevelButtonWidget(label: "Médio"),
-                        LevelButtonWidget(label: "Difícil"),
-                        LevelButtonWidget(label: "Perito"),
-                      ],
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      LevelButtonWidget(label: "Fácil"),
+                      LevelButtonWidget(label: "Médio"),
+                      LevelButtonWidget(label: "Difícil"),
+                      LevelButtonWidget(label: "Perito"),
+                    ],
+                  ),
+                  SizedBox(height: 24),
+                  Expanded(
+                    child: GridView.count(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16,
+                      children: controller.quizzes!
+                          .map((e) => QuizCardWidget(quiz: e))
+                          .toList(),
                     ),
-                    SizedBox(height: 24),
-                    Expanded(
-                      child: GridView.count(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 16,
-                        mainAxisSpacing: 16,
-                        children: controller.quizzes!
-                            .map((e) => QuizCardWidget(quiz: e))
-                            .toList(),
-                      ),
-                    ),
-                  ],
-                )),
+                  ),
+                ],
+              ),
+            ),
           );
   }
 }
