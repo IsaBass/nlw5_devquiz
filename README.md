@@ -1,13 +1,6 @@
 # App DevQuiz
 #### App desenvolvido em acompanhamento à 5ª NLW da Rocketseat.
 
-<br>
-
-💬 [Meu linkedin](https://www.linkedin.com/in/isaias-gon%C3%A7alves-igs/)
-
-
-<br>
-
 ### Tecnologias utilizadas:
 
 - setState
@@ -19,7 +12,10 @@
 
 
 <br>
-<br>
+
+💬 [Meu linkedin](https://www.linkedin.com/in/isaias-gon%C3%A7alves-igs/)
+
+<hr>
 
 ##### Outros Projetos Flutter:
 
