@@ -4,12 +4,15 @@
 ### Tecnologias utilizadas:
 
 - setState
+- Value Notifier
 - Arquitetura MVC
 - assets locais
 - banco local em .json
 - google_fonts
 - share_plus
 
+![screen](/imgs/screen01.png). ![screen](/imgs/screen02.png)
+![screen](/imgs/screen03.png)
 
 <br>
 
