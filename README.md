@@ -22,6 +22,7 @@
 
 ##### Outros Projetos Flutter:
 
+###### [Chat OnLine Firebase](https://github.com/IsaBass/chat_firebase)  (Firebase, Google SignIn, camera)
 ###### [Agenda de Contatos](https://github.com/IsaBass/agenda_contatos)  (Banco SQL local, camera)
 ###### [Buscador de gifs](https://github.com/IsaBass/buscador_gifs) (share, http, transparent_image)
 ###### [To-Do_Offline](https://github.com/IsaBass/todo_offline) (path_provider, json)
